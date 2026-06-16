@@ -1,0 +1,18 @@
+# only run on macOS
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # needed for brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Created by `pipx` on 2026-01-06 16:25:36
+  export PATH="$PATH:/Users/mafa/.local/bin"
+fi
+
+if [ -r ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mafa/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/mafa/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mafa/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/mafa/Downloads/google-cloud-sdk/completion.bash.inc'; fi

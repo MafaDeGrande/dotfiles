@@ -1,0 +1,105 @@
+# PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\w\[\e[0m\]\$ '
+# maconly settings
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+  # bun
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+
+  # Created by `pipx` on 2026-01-06 16:25:36
+  export PATH="$PATH:/Users/mafa/.local/bin"
+fi
+
+# autocomplition for pass
+source $HOME/.config/pass.bash-completion
+source $HOME/.config/pass-tail.bash.completion
+
+# ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
+
+export HISTFILE=~/.histfile
+export HISTSIZE=25000
+export SAVEHIST=25000
+export HISTCONTROL=ignorespace
+
+# ~~~~~~~~~~~~~~~ GIT prompt ~~~~~~~~~~~~~~~~~~~~
+# hardcode way
+# export GIT_PS1_SHOWDIRTYSTATE=1
+# export GIT_PS1_SHOWSTASHSTATE=1
+# export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+# Explicitly unset color (default anyhow). Use 1 to set it.
+# export GIT_PS1_SHOWCOLORHINTS=1
+# export GIT_PS1_DESCRIBE_STYLE="branch"
+
+#--
+# export GIT_PS1_SHOWUPSTREAM="auto git"
+# if [[ -f ""$HOME"/.config/bash/git-prompt.sh" ]]; then
+#   source ""$HOME"/.config//bash/git-prompt.sh"
+# fi
+#--
+#
+# colorized prompt for including parents directories set \w, for disable it set \W
+# PROMPT_COMMAND='__git_ps1 "\[\e[33m\]\u\[\e[0m\]@\[\e[34m\]\h\[\e[0m\]:\[\e[35m\]\w\[\e[0m\]" " \n(ins)> "'
+
+#~~~~~~~~~~~~~~~
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
+
+#nvim
+alias vim=nvim
+alias v=nvim
+
+#ls
+alias ls='ls --color=auto'
+alias ll='ls -la'
+alias la='ls -lathr'
+
+#tmux
+alias t='tmux'
+
+#back
+alias '..'='cd ..'
+
+#python
+alias 'pip'='pip3'
+alias 'python'='python3'
+
+# downloader for video
+# yt-dlp video downloader
+# function vd {
+#   if [ -z "$1" ]; then
+#     echo "No URL for download"
+#     echo "Using: vd <URL>"
+#     return 1
+#   fi
+#   yt-dlp -f bestvideo*+bestaudio/best "$1"
+# }
+#
+# function vdmp {
+#   if [ -z "$1" ]; then
+#     echo "No URL for download"
+#     echo "Using: vdmp <URL>"
+#     return 1
+#   fi
+#   yt-dlp -f bestvideo*+bestaudio/best --merge-output-format mp4 "$1"
+# }
+
+#autocomplition for bash via homebrew
+#if [[ "$OSTYPE" == "darwin"* ]]; then
+#	[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+#fi
+
+if [ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
+  . /opt/homebrew/etc/profile.d/bash_completion.sh
+fi
+
+if [[ "${OSTYPE}" != darwin* ]]; then
+  if [[ $PS1 && -z ${BASH_COMPLETION_VERSINFO:-} ]]; then
+    for f in /nix/var/nix/profiles/default/etc/profile.d/bash_completion.sh \
+      $HOME/.nix-profile/etc/profile.d/bash_completion.sh; do
+      [[ -r $f ]] && source "$f" && break
+    done
+  fi
+fi
+
+eval "$(starship init bash)"

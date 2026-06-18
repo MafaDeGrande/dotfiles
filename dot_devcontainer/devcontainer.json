@@ -1,0 +1,24 @@
+{
+    "name": "work-setup",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "false",
+            "installOhMyZsh": "false",
+            "installOhMyZshConfig": "false",
+            "username": "maf4",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/nix:1": {
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
+    "remoteUser": "maf4"
+}

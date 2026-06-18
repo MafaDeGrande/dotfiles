@@ -1,0 +1,26 @@
+format = """
+$username[@](cyan)$hostname:$directory$git_branch $git_status $docker_context $kubernetes
+ins $character
+"""
+
+add_newline = false
+
+[git_status]
+style = "bold green"
+
+[directory]
+truncation_length = 12
+disabled = false
+truncate_to_repo = false
+
+[username]
+show_always = true
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format = "[$hostname](blue)"
+
+[character]
+success_symbol = '[>](bold green)'
+error_symbol = '[>](bold green)'

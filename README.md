@@ -7,9 +7,7 @@ git, devpod
 ```
 devpod context set-options -o DOTFILES_URL=https://github.com/MafaDeGrande/dotfiles
 ```
-
 2. To initialize devcontainer with devpod, run:
 ```
-devpod up <workspace directory> --devcontainer-path ~/.devcontainer/devcontainer.json
-```
+devpod up . --devcontainer-path ../devcontainer.json  --dotfiles https://github.com/MafaDeGrande/dotfiles --open-ide=false
 ```

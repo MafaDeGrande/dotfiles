@@ -2,8 +2,12 @@
 
 # install script on a new system inside of dev container
 
-# export XDG_CONFIG_HOME="$HOME"/.config
-#creating directories for bash prompt
+export XDG_CONFIG_HOME="$HOME"/.config
+
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
+
+ls -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
 
 #install  Nix packages form config.nix
 nix-env -iA nixpkgs.myPackages

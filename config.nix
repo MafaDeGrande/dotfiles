@@ -1,7 +1,7 @@
 {
- packageOverrides =pkgs: with pkgs {
+ packageOverrides = pkgs: with pkgs; {
       myPackages = pkgs.buildEnv {
-           name = "mafa-tools-ansible";
+           name = "mafa-tools";
            paths = [
                 bash-completion
                 starship

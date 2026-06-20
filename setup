@@ -12,5 +12,8 @@ ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
 #install  Nix packages form config.nix
 nix-env -iA nixpkgs.myPackages
 
+# Add PATH for chezmoi
+export PATH="$HOME/.nix-profile/bin:$PATH"
+
 # apply dot files with chezmoi
 chezmoi apply --source "$PWD"

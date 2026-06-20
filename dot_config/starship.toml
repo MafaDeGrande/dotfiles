@@ -6,7 +6,7 @@ ins $character
 add_newline = false
 
 [git_status]
-style = "bold green"
+style = "bold blue"
 
 [directory]
 truncation_length = 12

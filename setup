@@ -2,15 +2,11 @@
 
 # install script on a new system inside of dev container
 
-export XDG_CONFIG_HOME="$HOME"/.config
-
+# export XDG_CONFIG_HOME="$HOME"/.config
 #creating directories for bash prompt
 
 #install  Nix packages form config.nix
 nix-env -iA nixpkgs.myPackages
-
-# set up git prompt ( don't wanna use starship)
-mkdir -p "$XDG_CONFIG_HOME/bash"
 
 # apply dot files with chezmoi
 chezmoi apply --source "$PWD"

@@ -4,10 +4,21 @@
 
 export XDG_CONFIG_HOME="$HOME"/.config
 
+mkdir -p "$HOME"/.ssh/.config
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/config
+
 mkdir -p "$XDG_CONFIG_HOME"
 mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
 
-ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
+# ENVCONFIG env variable must be specified to choose right environment
+if [ "$ENVCONFIG" = "ansible" ]; then
+  ln -sf "$PWD/config-ansible.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
+fi
+
+if [ "$ENVCONFIG" = "kube" ]; then
+  ln -sf "$PWD/config-kube.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
+fi
 
 #install  Nix packages form config.nix
 nix-env -iA nixpkgs.myPackages
